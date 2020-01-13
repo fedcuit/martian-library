@@ -1,0 +1,14 @@
+2020-01-13 20:25:42.452 CST [3929] LOG:  starting PostgreSQL 12.1 on x86_64-apple-darwin19.2.0, compiled by Apple clang version 11.0.0 (clang-1100.0.33.16), 64-bit
+2020-01-13 20:25:42.453 CST [3929] LOG:  listening on IPv6 address "::1", port 5432
+2020-01-13 20:25:42.453 CST [3929] LOG:  listening on IPv6 address "fe80::1%lo0", port 5432
+2020-01-13 20:25:42.453 CST [3929] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2020-01-13 20:25:42.454 CST [3929] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2020-01-13 20:25:42.463 CST [3931] LOG:  database system was shut down at 2020-01-13 20:25:36 CST
+2020-01-13 20:25:42.466 CST [3929] LOG:  database system is ready to accept connections
+2020-01-13 20:26:09.991 CST [3998] FATAL:  database "martian_library_development" does not exist
+2020-01-13 20:27:37.166 CST [4241] ERROR:  database "martian_library_development" already exists
+2020-01-13 20:27:37.166 CST [4241] STATEMENT:  CREATE DATABASE "martian_library_development" ENCODING = 'unicode'
+2020-01-13 20:27:37.178 CST [4249] ERROR:  database "martian_library_test" already exists
+2020-01-13 20:27:37.178 CST [4249] STATEMENT:  CREATE DATABASE "martian_library_test" ENCODING = 'unicode'
+2020-01-13 20:29:22.809 CST [4611] ERROR:  unrecognized configuration parameter "tables"
+2020-01-13 20:29:22.809 CST [4611] STATEMENT:  show tables;
