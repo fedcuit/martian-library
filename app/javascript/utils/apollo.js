@@ -1,19 +1,22 @@
 // client
-import { ApolloClient } from 'apollo-client';
+import { ApolloClient } from "apollo-client";
 // cache
-import { InMemoryCache } from 'apollo-cache-inmemory';
+import { InMemoryCache } from "apollo-cache-inmemory";
 // links
-import { HttpLink } from 'apollo-link-http';
-import { onError } from 'apollo-link-error';
-import { ApolloLink, Observable } from 'apollo-link';
+import { HttpLink } from "apollo-link-http";
+import { onError } from "apollo-link-error";
+import { ApolloLink, Observable } from "apollo-link";
 
-const getToken = () =>
+const getCSRFToken = () =>
   document.querySelector('meta[name="csrf-token"]').getAttribute("content");
+
+const getAuthToken = () => localStorage.getItem("mlToken") || "";
 
 const setTokenForOperation = async operation =>
   operation.setContext({
     headers: {
-      "X-CSRF-Token": getToken()
+      "X-CSRF-Token": getCSRFToken(),
+      Authorization: getAuthToken()
     }
   });
 // link with token
@@ -75,8 +78,8 @@ export const createClient = (cache, requestLink) => {
     link: ApolloLink.from([
       createErrorLink(),
       createLinkWithToken(),
-      createHttpLink(),
+      createHttpLink()
     ]),
-    cache,
+    cache
   });
 };

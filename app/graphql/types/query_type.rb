@@ -11,7 +11,7 @@ module Types
       Item.preload(:user)
     end
 
-    field :me, Types::UserType, null: false
+    field :me, Types::UserType, null: true
 
     def me
       context[:current_user]
