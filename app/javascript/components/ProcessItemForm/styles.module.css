@@ -10,6 +10,16 @@
   align-items: start;
 }
 
+.form {
+  position: relative;
+}
+
+.errors {
+  position: absolute;
+  top: -20px;
+  color: #ff5845;
+}
+
 .input {
   font-size: 15px;
   height: 38px;
