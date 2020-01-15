@@ -1,17 +1,7 @@
 #import '../../fragments/Item.graphql'
 
-mutation UpdateItemMutation(
-  $id: ID!
-  $title: String!
-  $description: String
-  $imageUrl: String
-) {
-  updateItem(
-    id: $id
-    title: $title
-    description: $description
-    imageUrl: $imageUrl
-  ) {
+mutation UpdateItemMutation($id: ID!, $attributes: ItemAttributes!) {
+  updateItem(id: $id, attributes: $attributes) {
     item {
       ...ItemFragment
     }

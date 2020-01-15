@@ -14,13 +14,14 @@ const AddItemForm = () => (
         onProcessItem={({ title, description, imageUrl }) => {
           addItem({
             variables: {
-              title,
-              description,
-              imageUrl
+              attributes: {
+                title,
+                description,
+                imageUrl
+              }
             },
             update: (cache, { data: { addItem } }) => {
               const item = addItem.item;
-              debugger;
               if (item) {
                 const { items: currentItems } = cache.readQuery({
                   query: LibraryQuery
@@ -33,7 +34,7 @@ const AddItemForm = () => (
             }
           });
         }}
-      />
+      ></ProcessItemForm>
     )}
   </Mutation>
 );

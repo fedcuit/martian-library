@@ -9,11 +9,11 @@ const LoginForm = () => {
   return (
     <Mutation
       mutation={SignMeIn}
-      update={(cache, { data: signIn }) => {
-        cache.writeQuery({ query: Me, data: { me: signIn.user } });
+      update={(cache, {data: signIn}) => {
+        cache.writeQuery({query: Me, data: {me: signIn.user}});
       }}
     >
-      {(signIn, { loading: authenticating }) =>
+      {(signIn, {loading: authenticating, error}) =>
         authenticating ? (
           "..."
         ) : (
@@ -22,13 +22,13 @@ const LoginForm = () => {
               onSubmit={event => {
                 event.preventDefault();
                 signIn({
-                  variables: { email: input.current.value }
+                  variables: {email: input.current.value}
                 }).then(
                   ({
-                    data: {
-                      signIn: { token }
-                    }
-                  }) => {
+                     data: {
+                       signIn: {token}
+                     }
+                   }) => {
                     if (token) {
                       localStorage.setItem("mlToken", token);
                     }
@@ -42,7 +42,8 @@ const LoginForm = () => {
                 className={cs.input}
                 placeholder={"your email"}
               />
-              <input type="submit" value="Sign in" className={cs.button} />
+              <input type="submit" value="Sign in" className={cs.button}/>
+              {error && <span>{error.message}</span>}
             </form>
           </div>
         )

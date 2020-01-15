@@ -26,9 +26,7 @@ const UpdateItemForm = ({
               updateItem({
                 variables: {
                   id,
-                  title,
-                  description,
-                  imageUrl
+                  attributes: { title, description, imageUrl }
                 },
                 optimisticResponse: {
                   __typename: "Mutation",
